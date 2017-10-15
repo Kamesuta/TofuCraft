@@ -6,6 +6,8 @@ import java.nio.channels.FileChannel;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class FileCopy
 {
     private Object source;
@@ -22,12 +24,12 @@ public class FileCopy
         this.source = fileOrg;
         this.fileDest = fileDest;
     }
-    
+
     public boolean copy()
     {
         if (source instanceof File)
         {
-            return this.copyFileToFile((File)source, fileDest); 
+            return this.copyFileToFile((File)source, fileDest);
         }
         else if (source instanceof URL)
         {
@@ -139,7 +141,7 @@ public class FileCopy
                 d1 = this.getMessageDigest((URL)source);
             }
             String d2 = this.getMessageDigest(fileDest);
-            return d1.equals(d2);
+            return StringUtils.equals(d1, d2);
         }
         else
         {
@@ -186,7 +188,7 @@ public class FileCopy
         }
         return this.digestToString(md);
     }
-    
+
     private String getMessageDigest(File file)
     {
         MessageDigest md;
@@ -227,7 +229,7 @@ public class FileCopy
 
         return this.digestToString(md);
     }
-    
+
     private String digestToString(MessageDigest md)
     {
         byte[] digestBytes = md.digest();

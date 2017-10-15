@@ -1,3 +1,4 @@
 dependencies {
+	compile ('craftguide:CraftGuide:1.7.1.0:api')
     testCompile ('junit:junit:4.4')
 }
