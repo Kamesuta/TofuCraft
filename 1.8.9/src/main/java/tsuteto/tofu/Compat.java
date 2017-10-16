@@ -1,5 +1,5 @@
 package tsuteto.tofu;
 
-public class ModInfo {
+public class Compat {
 
 }
